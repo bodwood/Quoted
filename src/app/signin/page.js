@@ -17,7 +17,7 @@ const LoginScreen = () => {
     }
     console.log(result);
     //takes user to the home page
-    return router.push('/');
+    return router.push('/add-quote');
   };
   return (
     <div className='container mx-auto max-w-lg py-12 md:py-24 px-0 md:px-8 min-h-[4xl]'>

@@ -1,11 +1,13 @@
 'use client';
 import { useState } from 'react';
 import signUp from '@/firebase/auth/signup';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('')
   const router = useRouter();
 
   const handleForm = async (e) => {
@@ -33,10 +35,28 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <div className='py-0 md:py-8 px-4 md:px-10 bg-[boxBR] md:shadow-xl'>
+        <div className='py-0 md:py-8 px-4 md:px-10 bg-[boxBR] md:shadow-xl text-black'>
           <form className='space-y-6' onSubmit={handleForm}>
             <div className='space-y-5'>
               <div>
+                <div>
+                  <input
+                    type='text'
+                    name='first-name'
+                    placeholder='Jane'
+                    className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <input
+                    type='text'
+                    name='last-name'
+                    placeholder='Doe'
+                    className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
                 <input
                   type='email'
                   name='email'

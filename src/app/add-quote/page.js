@@ -1,18 +1,22 @@
 'use client';
 import addData from '@/firebase/firestore/addData';
 import { useState } from 'react';
+import { useAuthContext } from '@/context/AuthContext';
 
 // Adds quote data to firestore by using the addData function in src/firebase/firestore/addData.js
 export default function Home() {
   const [quote, setQuote] = useState('');
+  const userId = useAuthContext().user.uid;
+  const email = useAuthContext().user.email;
+  console.log(userId);
 
   // This function is called when the form is submitted and adds the quote to firestore.
   const handleForm = async () => {
     const data = {
-      //timestamp: '',
+      // timestamp: '',
       quote: quote,
     };
-    const { result, error } = await addData('users', 'user-id', data);
+    const { result, error } = await addData('users', userId, data);
     if (error) {
       return console.log(error);
     }
