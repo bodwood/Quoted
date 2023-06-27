@@ -8,6 +8,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
+  // Used to sign in a user by using the signIn function in src/firebase/auth/signin.js
   const handleForm = async (e) => {
     e.preventDefault();
     const { result, error } = await signIn(email, password);
@@ -32,7 +33,7 @@ const LoginScreen = () => {
             </div>
           </div>
         </div>
-        <div className='py-0 md:py-8 px-4 md:px-10 bg-[boxBR] md:shadow-xl'>
+        <div className='py-0 md:py-8 px-4 text-black md:px-10 bg-[boxBR] md:shadow-xl'>
           <form className='space-y-6' onSubmit={handleForm}>
             <div className='space-y-5'>
               <div>
