@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import signUp from '@/firebase/auth/signup';
 import { useRouter } from 'next/navigation';
+import addData from '@/firebase/firestore/addData';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -10,15 +11,29 @@ const SignUp = () => {
   const [lastName, setLastName] = useState('')
   const router = useRouter();
 
+  const data = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    quotes: [
+      {
+        quote: '',
+        timestamp: null
+      },
+    ],
+  }
+
+  //Runs signUp function from firebase/auth/signup.js
   const handleForm = async (e) => {
     e.preventDefault();
     const { result, error } = await signUp(email, password);
-
-    if (error) {
+    const {result2, error2 } = await addData('users', result.user.uid, {data});
+    if (error || error2) {
       return console.log(error);
     }
+
     console.log(result);
-    return router.push('/admin');
+    return router.push('/add-quote');
   };
 
   return (

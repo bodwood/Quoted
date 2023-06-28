@@ -13,6 +13,5 @@ export default async function signUp(email, password) {
   } catch (e) {
     error = e;
   }
-
   return { result, error };
 }
