@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getAllQuotes } from '@/firebase/firestore/getData';
+import QuoteCard from '@/components/QuoteCard';
 
-export default function Home() {
+export default function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
@@ -17,34 +18,16 @@ export default function Home() {
     fetchQuotes();
   }, []);
 
-  const formatTimestamp = (timestamp) => {
-    if (timestamp instanceof Date) {
-      return timestamp.toString();
-    } else if (timestamp?.toDate instanceof Function) {
-      const date = timestamp.toDate();
-      return date.toString();
-    } else {
-      return '';
-    }
-  };
-
   return (
-    <div className='container mx-auto max-w-lg py-12 md:py-24 px-0 md:px-8 min-h-[4xl]'>
-      <div className='space-y-8'>
-        <div className='space-y-6'>
-          <div className='space-y-2 md:space-y-3 text-center'></div>
-        </div>
-        <div className='py-0 md:py-8 px-4 md:px-10 bg-[boxBR] md:shadow-xl text-white'>
-          <div>
-            {quotes.map((quote, index) => (
-              <div key={index}>
-                <p>{quote.quote}</p>
-                <p>{formatTimestamp(quote.timestamp)}</p>
-              </div>
-            ))}
+    <div className='flex flex-wrap justify-center min-h-screen'>
+      {quotes.map((quote, index) => (
+        <div key={index} className='w-64 h-80 m-4'>
+          <div className='flex items-center justify-center h-full bg-white rounded-md shadow-md p-4'>
+            <QuoteCard quote={quote.quote} />
+            {console.log(quote.quote)}
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
