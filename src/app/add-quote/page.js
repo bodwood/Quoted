@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAuthContext } from '@/context/AuthContext';
 import { updateDocument } from '@/firebase/firestore/getData';
 import { getDocument } from '@/firebase/firestore/getData';
+import { useRouter } from 'next/navigation';
 
 // Adds quote data to firestore by using the addData function in src/firebase/firestore/addData.js
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
   const email = useAuthContext().user.email;
   const quotes = useAuthContext().user.quotes;
   const timestamp = useAuthContext().user.timestamp;
+  const router = useRouter();
 
   const data = {
     quote: quote,
@@ -43,6 +45,7 @@ export default function Home() {
     } else {
       console.log(userDocument.error);
     }
+    return router.push('/all-quotes')
   };
   return (
     <div className='container mx-auto max-w-lg py-12 md:py-24 px-0 md:px-8 min-h-[4xl]'>

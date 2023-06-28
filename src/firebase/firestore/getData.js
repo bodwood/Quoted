@@ -1,5 +1,5 @@
 import firebase_app from '../config';
-import { getFirestore, doc, getDoc, updateDoc, getDocs, collection } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, updateDoc, getDocs, collection, query, where, getUser } from 'firebase/firestore';
 
 const db = getFirestore(firebase_app);
 
@@ -12,7 +12,6 @@ export async function getDocument(collection, id) {
 
   try {
     result = await getDoc(docRef);
-    console.log(result);
   } catch (e) {
     error = e;
   }
@@ -51,4 +50,28 @@ export async function getAllQuotes() {
   });
 
   return allQuotes;
+}
+
+// Fetches the user data from Firestore based on the user's ID
+export async function fetchUser(userId) {
+  const userCollectionRef = collection(db, 'users');
+  const q = query(userCollectionRef, where('userId', '==', userId));
+  const querySnapshot = await getDocs(q);
+
+  // try {
+  //   const userCollectionRef = collection(db, 'users');
+  //   const q = query(userCollectionRef, where('userId', '==', userId));
+  //   const querySnapshot = await getDocs(q);
+
+  //   if (!querySnapshot.empty) {
+  //     const userDoc = querySnapshot.docs[0];
+  //     console.log(userDoc)
+  //     const userData = userDoc.data();
+  //     return userData;
+  //   }
+  // } catch (error) {
+  //   console.error('Error fetching user data: ', error);
+  // }
+  
+  // return null;
 }
