@@ -15,7 +15,7 @@ export default function Home() {
   const data = {
     quote: quote,
     timestamp: new Date(),
-  }
+  };
 
   // This function is called when the form is submitted and adds the quote to firestore.
   const handleForm = async (e) => {

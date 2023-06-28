@@ -1,5 +1,5 @@
 import firebase_app from '../config';
-import { getFirestore, doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, updateDoc, getDocs, collection } from 'firebase/firestore';
 
 const db = getFirestore(firebase_app);
 
@@ -35,4 +35,20 @@ export async function updateDocument(collection, id, data) {
   }
 
   return { result, error };
+}
+
+// Retrieves all quotes from all users
+export async function getAllQuotes() {
+  const usersCollectionRef = collection(db, 'users');
+  const querySnapshot = await getDocs(usersCollectionRef);
+
+  let allQuotes = [];
+
+  querySnapshot.forEach((userDoc) => {
+    const userData = userDoc.data();
+    const userQuotes = userData.quotes || [];
+    allQuotes = allQuotes.concat(userQuotes);
+  });
+
+  return allQuotes;
 }
