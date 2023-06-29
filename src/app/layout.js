@@ -1,4 +1,5 @@
 'use client';
+import Navbar from '@/components/Navbar';
 import './globals.css';
 import { AuthContextProvider } from '@/context/AuthContext';
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
+        <Navbar />
         <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>
