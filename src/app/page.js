@@ -25,12 +25,12 @@ const LandingScreen = () => (
         <div className='flex'>
           <img
             src='https://decider.com/wp-content/uploads/2020/10/alexis-schitts-sketchy.jpg?quality=90&strip=all&w=618'
-            alt='Alexis Rose Quote'
+            alt='quote Alexis'
             className='object-cover w-1/2'
           />
           <img
             src='https://i.pinimg.com/originals/0e/51/60/0e5160eac9f802adbf320e9d42c26884.png'
-            alt='Ted Lasso Quote'
+            alt='quote ted'
             className='hidden sm:inline object-cover w-1/2'
           />
         </div>
@@ -38,20 +38,6 @@ const LandingScreen = () => (
     </div>
 
     <h2 className='mt-5 mb-1 text-2xl font-semibold ml-1%'>Our Favorites</h2>
-    <div className='flex overflow-hidden justify-center'>
-      <div className='flex'>
-        <img
-          src='https://decider.com/wp-content/uploads/2020/10/alexis-schitts-sketchy.jpg?quality=90&strip=all&w=618'
-          alt='Alexis Rose Quote'
-          className='object-cover w-1/2'
-        />
-        <img
-          src='https://i.pinimg.com/originals/0e/51/60/0e5160eac9f802adbf320e9d42c26884.png'
-          alt='Ted Lasso Quote'
-          className='hidden sm:inline object-cover w-1/2'
-        />
-      </div>
-    </div>
   </div>
 );
 

@@ -1,15 +1,12 @@
-'use client';
+'use client'
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import { AuthContextProvider } from '@/context/AuthContext';
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <body>
         <Navbar />
@@ -17,4 +14,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
