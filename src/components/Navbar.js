@@ -13,7 +13,7 @@ function Navbar(props) {
     >
       <div className='container px-4 mx-auto flex flex-wrap items-center justify-between relative z-50'>
         <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
-          <Link href='/' passHref>
+          <Link href='/' passHref legacyBehavior>
             <span
               className={
                 (props.transparent ? 'text-white' : 'text-gray-800') +
@@ -41,7 +41,7 @@ function Navbar(props) {
         >
           <ul className='flex flex-col lg:flex-row list-none mr-auto'>
             <li className='flex items-center'>
-              <Link href='/' passHref>
+              <Link href='/' passHref legacyBehavior>
                 <span
                   className={
                     (props.transparent
@@ -61,7 +61,7 @@ function Navbar(props) {
               </Link>
             </li>
             <li className='flex items-center'>
-              <Link href='/all-quotes' passHref>
+              <Link href='/all-quotes' passHref legacyBehavior>
                 <span
                   className={
                     (props.transparent
@@ -83,33 +83,33 @@ function Navbar(props) {
           </ul>
           <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
             <li className='flex items-center'>
-              <Link href='/signup' passHref>
-                <a
-                  className={
-                    (props.transparent
-                      ? 'bg-white text-gray-800 active:bg-gray-100'
-                      : 'bg-blue-500 text-white active:bg-blue-600') +
-                    ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 lg:mb-0 ml-3 transition-all duration-150 ease-in-out'
-                  }
-                  type='button'
-                >
-                  <i className='fas fa-arrow-alt-circle-down'></i> Sign Up
-                </a>
+              <Link
+                href='/signup'
+                passHref
+                className={
+                  (props.transparent
+                    ? 'bg-white text-gray-800 active:bg-gray-100'
+                    : 'bg-blue-500 text-white active:bg-blue-600') +
+                  ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 lg:mb-0 ml-3 transition-all duration-150 ease-in-out'
+                }
+                type='button'>
+
+                <i className='fas fa-arrow-alt-circle-down'></i>Sign Up
               </Link>
             </li>
             <li className='flex items-center'>
-              <Link href='/login' passHref>
-                <a
-                  className={
-                    (props.transparent
-                      ? 'bg-white text-gray-800 active:bg-gray-100'
-                      : 'bg-blue-500 text-white active:bg-blue-600') +
-                    ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-3 transition-all duration-150 ease-in-out'
-                  }
-                  type='button'
-                >
-                  <i className='fas fa-arrow-alt-circle-down'></i> Log In
-                </a>
+              <Link
+                href='/login'
+                passHref
+                className={
+                  (props.transparent
+                    ? 'bg-white text-gray-800 active:bg-gray-100'
+                    : 'bg-blue-500 text-white active:bg-blue-600') +
+                  ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-3 transition-all duration-150 ease-in-out'
+                }
+                type='button'>
+
+                <i className='fas fa-arrow-alt-circle-down'></i>Log In
               </Link>
             </li>
           </ul>
