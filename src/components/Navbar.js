@@ -40,7 +40,7 @@ function Navbar(props) {
           id='example-navbar-warning'
         >
           <ul className='flex flex-col lg:flex-row list-none mr-auto'>
-            <li className='flex items-center'>
+            <li className='flex items-center cursor-pointer'>
               <Link href='/' passHref legacyBehavior>
                 <span
                   className={
@@ -60,7 +60,7 @@ function Navbar(props) {
                 </span>
               </Link>
             </li>
-            <li className='flex items-center'>
+            <li className='flex items-center cursor-pointer'>
               <Link href='/all-quotes' passHref legacyBehavior>
                 <span
                   className={
@@ -82,6 +82,26 @@ function Navbar(props) {
             </li>
           </ul>
           <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
+            <li className='flex items-center cursor-pointer'>
+              <Link href='/user-profile' passHref legacyBehavior>
+                <span
+                  className={
+                    (props.transparent
+                      ? 'lg:text-white lg:hover:text-gray-300 text-gray-800'
+                      : 'text-gray-800 hover:text-gray-600') +
+                    ' px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
+                  }
+                >
+                  <i
+                    className={
+                      (props.transparent ? 'lg:text-gray-300 text-gray-500' : 'text-gray-500') +
+                      ' far fa-file-alt text-lg leading-lg mr-2'
+                    }
+                  ></i>
+                  Profile
+                </span>
+              </Link>
+            </li>
             <li className='flex items-center'>
               <Link
                 href='/signup'
@@ -92,14 +112,14 @@ function Navbar(props) {
                     : 'bg-blue-500 text-white active:bg-blue-600') +
                   ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 lg:mb-0 ml-3 transition-all duration-150 ease-in-out'
                 }
-                type='button'>
-
+                type='button'
+              >
                 <i className='fas fa-arrow-alt-circle-down'></i>Sign Up
               </Link>
             </li>
             <li className='flex items-center'>
               <Link
-                href='/login'
+                href='/signin'
                 passHref
                 className={
                   (props.transparent
@@ -107,8 +127,8 @@ function Navbar(props) {
                     : 'bg-blue-500 text-white active:bg-blue-600') +
                   ' text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ml-3 transition-all duration-150 ease-in-out'
                 }
-                type='button'>
-
+                type='button'
+              >
                 <i className='fas fa-arrow-alt-circle-down'></i>Log In
               </Link>
             </li>

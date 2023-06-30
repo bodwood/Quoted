@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FaArrowRight, FaHelicopter } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <div className='max-w-7xl mx-auto px-0 lg:px-12 py-0 lg:py-12 min-h-screen'>
+  <div className='max-w-7xl mx-auto px-0 lg:px-12 py-0 lg:py-12 min-h-screen bg-white'>
     <div className='flex flex-col-reverse lg:flex-row space-y-0 lg:space-y-0 lg:space-x-20 mt-10'>
       <div className='w-full sm:w-sm transform translate-y-[-50%] bg-orange-50 lg:bg-transparent mx-6 md:mx-8 lg:mx-0 px-6 md:px-8 lg:px-0 py-6 md:py-8 lg:py-4'>
         <div className='space-y-10'>
