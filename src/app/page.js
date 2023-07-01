@@ -1,43 +1,46 @@
 import Link from 'next/link';
-import { FaArrowRight, FaHelicopter } from 'react-icons/fa';
+import { FaArrowRight, FaHelicopter, FaCommentDots } from 'react-icons/fa';
 
 const LandingScreen = () => (
-  <div className='max-w-7xl mx-auto px-0 lg:px-12 py-0 lg:py-12 min-h-screen bg-white'>
-    <div className='flex flex-col-reverse lg:flex-row space-y-0 lg:space-y-0 lg:space-x-20 mt-10'>
-      <div className='w-full sm:w-sm transform translate-y-[-50%] bg-orange-50 lg:bg-transparent mx-6 md:mx-8 lg:mx-0 px-6 md:px-8 lg:px-0 py-6 md:py-8 lg:py-4'>
-        <div className='space-y-10'>
-          <div className='space-y-4 ml-4%'>
-            <div className='flex items-center'></div>
-            <h1 className='text-4xl font-bold bg-gradient-to-r from-[#9C4F96] via-[#FF6355] to-[#2AA8F2] bg-clip-text'>
-              Quoted
-            </h1>
-            <h2 className='text-2xl font-semibold'>Quotes from the heart</h2>
-          </div>
-          <div className='flex space-x-3'>
-            <Link href='/all-quotes' className='font-bold text-lg ml-4%'>
-              Discover now
-            </Link>
-            <FaArrowRight className='w-4 h-4' />
-          </div>
+  <div className='max-w-7xl mx-auto'>
+    <div className='flex flex-col-reverse md:flex-row items-center md:space-x-10 py-20 md:py-28'>
+      <div className='flex-1 space-y-5 md:space-y-10'>
+        <h1 className='text-3xl sm:text-4xl lg:text-6xl font-semibold leading-tight'>
+          <span className='relative'>
+            Quoted,
+            <span className='absolute w-full h-3 bottom-1 left-0 bg-red-400 z-[-1]'></span>
+          </span>
+          <br />
+          <span className='text-red-400'>quotes from everywhere!</span>
+        </h1>
+        <p className='text-gray-500'>
+          Upload your favorite quotes from your favorite movies, books, and more! Sign Up now to get started!
+        </p>
+        <div className='space-x-4 sm:space-x-6 flex flex-col sm:flex-row'>
+          <Link href='/signup' passHref>
+          <button className='bg-red-400 hover:bg-red-500 text-white rounded-full py-3 px-6 font-normal text-lg'>
+            Get started
+          </button>
+          </Link>
+          <Link href='/all-quotes' passHref>
+          <button className='bg-transparent hover:bg-transparent text-white rounded-full py-3 px-6 font-normal text-lg flex items-center'>
+            <FaCommentDots className='w-4 h-4 mr-2 text-gray-300' />
+            View Feed
+          </button>
+          </Link>
         </div>
       </div>
-      <div className='flex overflow-hidden justify-center'>
-        <div className='flex'>
-          <img
-            src='https://decider.com/wp-content/uploads/2020/10/alexis-schitts-sketchy.jpg?quality=90&strip=all&w=618'
-            alt='quote Alexis'
-            className='object-cover w-1/2'
-          />
+      <div className='flex-1 relative'>
+        <div className='absolute top-[-20%] left-0 w-150% h-150% z-[-1] bg-red-50 dark:bg-red-400'></div>
+        <div className='relative h-300 rounded-2xl shadow-2xl overflow-hidden'>
           <img
             src='https://i.pinimg.com/originals/0e/51/60/0e5160eac9f802adbf320e9d42c26884.png'
             alt='quote ted'
-            className='hidden sm:inline object-cover w-1/2'
+            className='w-full h-full object-cover'
           />
         </div>
       </div>
     </div>
-
-    <h2 className='mt-5 mb-1 text-2xl font-semibold ml-1%'>Our Favorites</h2>
   </div>
 );
 

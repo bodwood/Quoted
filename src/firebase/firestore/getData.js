@@ -52,6 +52,31 @@ export async function getAllQuotes() {
   return allQuotes;
 }
 
+// Retrieves all quotes from all users
+export async function getAllQuoteInfo() {
+  const usersCollectionRef = collection(db, 'users');
+  const querySnapshot = await getDocs(usersCollectionRef);
+
+  let allQuotes = [];
+
+  querySnapshot.forEach((userDoc) => {
+    const userData = userDoc.data();
+    const { data, profilePic, quotes } = userData;
+    const userQuotesWithInfo = quotes.map((quote) => {
+      return {
+        data,
+        profilePic,
+        quote,
+      };
+    });
+    allQuotes = allQuotes.concat(userQuotesWithInfo);
+    console.log(allQuotes)
+  });
+
+  return allQuotes;
+}
+
+
 // Fetches the user data from Firestore based on the user's ID
 export async function fetchUser(userId) {
   const userCollectionRef = collection(db, 'users');

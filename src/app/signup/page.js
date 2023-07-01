@@ -15,12 +15,6 @@ const SignUp = () => {
     firstName: firstName,
     lastName: lastName,
     email: email,
-    quotes: [
-      {
-        quote: '',
-        timestamp: null
-      },
-    ],
   }
 
   //Runs signUp function from firebase/auth/signup.js
