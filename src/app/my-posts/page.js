@@ -1,23 +1,27 @@
 'use client';
 import QuoteCard from '@/components/QuoteCard';
-import { getAllQuoteInfo } from '@/firebase/firestore/getData';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import { useAuthContext } from '@/context/AuthContext';
+import { getAllQuotesCurrentUser } from '@/firebase/firestore/getData';
+import React, { useState, useEffect } from 'react';
 
-const allQuotes = () => {
+const AllQuotes = () => {
+  const { user: currentUser } = useAuthContext();
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const quoteInfo = await getAllQuoteInfo();
-        setQuotes(quoteInfo);
+        if (currentUser) {
+          const quoteInfo = await getAllQuotesCurrentUser(currentUser.uid);
+          setQuotes(quoteInfo);
+        }
       } catch (error) {
-        console.error('Error fetching quotes: ', error);
+        console.error('Error fetching quotes:', error);
       }
     };
     fetchQuotes();
-  }, []);
+  }, [currentUser]);
+
   return (
     <div className='container mx-auto p-12'>
       <h1 className='text-4xl font-bold justify-center'>Feed</h1>
@@ -38,4 +42,4 @@ const allQuotes = () => {
   );
 };
 
-export default allQuotes;
+export default AllQuotes;

@@ -20,7 +20,6 @@ function Navbar(props) {
     }
     console.log('successful signout')
   };
-  console.log(user)
 
   return (
     <nav

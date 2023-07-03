@@ -47,11 +47,19 @@ export default function Home() {
     }
     return router.push('/all-quotes')
   };
+
+    const handleProfilePicUpload = (e) => {
+      if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+      }
+    };
+
+
   return (
     <div className='container mx-auto max-w-lg py-12 md:py-24 px-0 md:px-8 min-h-[4xl]'>
       <div className='space-y-8'>
         <div className='space-y-6'>
-          <div className='space-y-2 md:space-y-3 text-center'>
+          <div className='space-y-2 md:space-y-3 text-center text-3xl'>
             <h1 className=''>Add Quote</h1> {/* heading classname */}
           </div>
         </div>

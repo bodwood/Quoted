@@ -76,6 +76,31 @@ export async function getAllQuoteInfo() {
   return allQuotes;
 }
 
+export async function getAllQuotesCurrentUser(uid) {
+  const userDocRef = doc(db, 'users', uid);
+  const userDocSnap = await getDoc(userDocRef);
+
+  if (userDocSnap.exists()) {
+    const userData = userDocSnap.data();
+    const { quotes } = userData;
+
+    let allQuotes = [];
+    quotes.forEach((quote) => {
+      allQuotes.push({
+        data: userData.data,
+        profilePic: userData.profilePic,
+        quote: quote,
+      });
+    });
+
+    console.log(allQuotes);
+    return allQuotes;
+  }
+
+  return [];
+}
+
+
 
 // Fetches the user data from Firestore based on the user's ID
 export async function fetchUser(userId) {
