@@ -9,7 +9,9 @@ const RootLayout = ({ children }) => {
     <html lang='en'>
       <head />
       <body>
-        <Navbar />
+        <AuthContextProvider>
+          <Navbar />
+        </AuthContextProvider>
         <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>

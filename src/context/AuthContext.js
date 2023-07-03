@@ -28,6 +28,7 @@ export const AuthContextProvider = ({ children }) => {
       }
       //Set loading to false
       setLoading(false);
+        console.log('User:', user);
     });
 
     return () => unsubscribe();

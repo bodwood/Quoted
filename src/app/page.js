@@ -18,16 +18,21 @@ const LandingScreen = () => (
         </p>
         <div className='space-x-4 sm:space-x-6 flex flex-col sm:flex-row'>
           <Link href='/signup' passHref>
-          <button className='bg-red-400 hover:bg-red-500 text-white rounded-full py-3 px-6 font-normal text-lg'>
-            Get started
-          </button>
+            <button className='bg-red-400 hover:bg-red-500 text-white rounded-full py-3 px-6 font-normal text-lg'>
+              Get started
+            </button>
           </Link>
           <Link href='/all-quotes' passHref>
-          <button className='bg-transparent hover:bg-transparent text-white rounded-full py-3 px-6 font-normal text-lg flex items-center'>
-            <FaCommentDots className='w-4 h-4 mr-2 text-gray-300' />
-            View Feed
-          </button>
+            <button className='bg-transparent hover:bg-transparent text-white rounded-full py-3 px-6 font-normal text-lg flex items-center'>
+              <FaCommentDots className='w-4 h-4 mr-2 text-gray-300' />
+              View Feed
+            </button>
           </Link>
+        </div>
+        <div>
+          <p className='text-gray-500'>
+            Already have an account? <Link href='/signin' passHref><span className='text-red-400'>Login</span></Link>
+          </p>
         </div>
       </div>
       <div className='flex-1 relative'>
