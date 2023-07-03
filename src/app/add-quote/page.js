@@ -17,6 +17,7 @@ export default function Home() {
   const data = {
     quote: quote,
     timestamp: new Date(),
+    id: userId,
   };
 
   // This function is called when the form is submitted and adds the quote to firestore.
@@ -47,13 +48,6 @@ export default function Home() {
     }
     return router.push('/all-quotes')
   };
-
-    const handleProfilePicUpload = (e) => {
-      if (e.target.files[0]) {
-        setImage(e.target.files[0]);
-      }
-    };
-
 
   return (
     <div className='container mx-auto max-w-lg py-12 md:py-24 px-0 md:px-8 min-h-[4xl]'>

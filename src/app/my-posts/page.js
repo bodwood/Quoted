@@ -23,9 +23,8 @@ const AllQuotes = () => {
   }, [currentUser]);
 
   return (
-    <div className='container mx-auto p-12'>
-      <h1 className='text-4xl font-bold justify-center'>Feed</h1>
-      <h2 className='text-3xl font-bold mt-5'>Latest articles</h2>
+    <div className='container mx-auto'>
+      <h1 className='text-4xl font-bold justify-center'>Your Quotes</h1>
       <hr className='mt-5' />
 
       {quotes.map((quote, index) => (
@@ -35,6 +34,7 @@ const AllQuotes = () => {
             lastName={quote.data.lastName}
             quote={quote.quote.quote}
             profilePic={quote.profilePic}
+            quoteId={quote.quote.id}
           />
         </div>
       ))}

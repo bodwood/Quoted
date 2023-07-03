@@ -1,11 +1,13 @@
 'use client';
 import QuoteCard from '@/components/QuoteCard';
+import { useAuthContext } from '@/context/AuthContext';
 import { getAllQuoteInfo } from '@/firebase/firestore/getData';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
 const allQuotes = () => {
   const [quotes, setQuotes] = useState([]);
+  const { user } = useAuthContext() || '';
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -18,6 +20,19 @@ const allQuotes = () => {
     };
     fetchQuotes();
   }, []);
+
+  const updateQuote = (quoteId, updatedQuote) => {
+    setQuotes((prevQuotes) => {
+      const updatedQuotes = prevQuotes.map((quote) => {
+        if (quote.quoteId === quoteId) {
+          return { ...quote, quote: updatedQuote };
+        }
+        return quote;
+      });
+      return updatedQuotes;
+    });
+  };
+  
   return (
     <div className='container mx-auto p-12'>
       <h1 className='text-4xl font-bold justify-center'>Feed</h1>
@@ -31,6 +46,8 @@ const allQuotes = () => {
             lastName={quote.data.lastName}
             quote={quote.quote.quote}
             profilePic={quote.profilePic}
+            quoteId={quote.quote.id}
+            updateQuote={updateQuote}
           />
         </div>
       ))}

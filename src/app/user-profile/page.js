@@ -25,12 +25,14 @@ export default function Home() {
         if (currentUser) {
           const userDocument = await getDocument('users', userId);
           const userData = userDocument.result.data();
+          console.log(userData)
           setUser({
             firstName: userData.firstName || '',
             lastName: userData.lastName || '',
             email: userData.email || '',
             profilePic: userData.profilePic || '',
           });
+          console.log(user)
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -58,28 +60,27 @@ export default function Home() {
   };
 
   const handleProfilePicUpload = (e) => {
-    if(e.target.files[0])
-    {
-      setImage(e.target.files[0]);;
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
     }
   };
 
-const handleProfilePicSubmit = async (e) => {
-  e.preventDefault();
+  const handleProfilePicSubmit = async (e) => {
+    e.preventDefault();
 
-  if (image) {
-    try {
-      const { success, error } = await addData('users', userId, {}, image);
-      if (success) {
-        console.log('Profile picture added successfully');
-      } else {
-        console.log('Error adding profile picture:', error);
+    if (image) {
+      try {
+        const { success, error } = await addData('users', userId, {}, image);
+        if (success) {
+          console.log('Profile picture added successfully');
+        } else {
+          console.log('Error adding profile picture:', error);
+        }
+      } catch (error) {
+        console.log('Error uploading profile picture:', error);
       }
-    } catch (error) {
-      console.log('Error uploading profile picture:', error);
     }
-  }
-};
+  };
 
   const handleInputChange = (e) => {
     setUser((prevState) => ({
@@ -89,69 +90,73 @@ const handleProfilePicSubmit = async (e) => {
   };
 
   return (
-    <div className='min-h-screen mx-auto px-4 py-6 lg:py-8 bg-white'>
-      <div className='max-w-3xl lg:max-w-7xl mx-auto'>
-        <div className='flex flex-col lg:flex-row'>
-          <div className='flex-1.5 md:flex-2xl md:flex-none'>
+    <div className='min-h-screen flex justify-center items-center bg-white'>
+      <div className='max-w-3xl w-full mx-4 py-6 lg:py-8'>
+        <div className='flex flex-col lg:flex-row space-y-6 lg:space-y-0'>
+          <div className='flex-1'>
             <h2 className='text-2xl font-extrabold'>Profile</h2>
-            <div className='space-y-6'>
-              <form onSubmit={handleForm} className='space-y-5'>
-                <div className='space-y-5'>
-                  <div>
-                    <label className='block mb-1'>First Name</label>
-                    <input
-                      type='text'
-                      name='firstName'
-                      placeholder='First Name'
-                      className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
-                      value={user.firstName}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label className='block mb-1'>Last Name</label>
-                    <input
-                      type='text'
-                      name='lastName'
-                      placeholder='Last Name'
-                      className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
-                      value={user.lastName}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <label className='block mb-1'>Email</label>
-                    <input
-                      type='text'
-                      name='email'
-                      placeholder='Email'
-                      className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
-                      value={user.email}
-                      disabled
-                    />
-                  </div>
+            <form onSubmit={handleForm} className='space-y-5 mt-4'>
+              <div className='space-y-5'>
+                <div>
+                  <label className='block mb-1'>First Name</label>
+                  <input
+                    type='text'
+                    name='firstName'
+                    placeholder='First Name'
+                    className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
+                    value={user.firstName}
+                    onChange={handleInputChange}
+                  />
                 </div>
-                <div className='space-y-6'>
-                  <button className='btn btn-orange btn-lg w-full text-black' type='submit'>
-                    Save
-                  </button>
+                <div>
+                  <label className='block mb-1'>Last Name</label>
+                  <input
+                    type='text'
+                    name='lastName'
+                    placeholder='Last Name'
+                    className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
+                    value={user.lastName}
+                    onChange={handleInputChange}
+                  />
                 </div>
-              </form>
-            </div>
-            <div className='space-y-6'>
-                <div className='space-y-5'>
-                  <div>
-                    <label className='block mb-1'>Profile Pic</label>
-                    <input type='file' ref={profilePicInputRef} onChange={handleProfilePicUpload} className='' />
-                    <button className='btn btn-orange btn-lg w-full text-black' onClick={handleProfilePicSubmit}>
-                      Upload Profile Picture
-                    </button>
-                  </div>
+                <div>
+                  <label className='block mb-1'>Email</label>
+                  <input
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                    className='w-full text-black rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300'
+                    value={user.email}
+                    disabled
+                  />
                 </div>
-            </div>
+              </div>
+              <div className='space-y-6'>
+                <button
+                  className='bg-orange-500 text-white px-6 py-3 rounded-md text-lg font-medium w-full'
+                  type='submit'
+                >
+                  Save
+                </button>
+              </div>
+            </form>
           </div>
-          <div>
-            <img src={user.profilePic} alt='Profile Pic' className='w-40 h-40 rounded-full' />
+          <div className='flex-1'>
+            <div className='space-y-5 mt-4'>
+              <div className='flex justify-center'>
+                <img src={user.profilePic} alt='Profile Pic' className='w-40 h-40 rounded-full' />
+              </div>
+              <div>
+                <label className='block mb-1'>Profile Pic</label>
+                <input type='file' ref={profilePicInputRef} onChange={handleProfilePicUpload} className='' />
+                <button
+                  className='bg-orange-500 text-white px-6 py-3 rounded-md text-lg font-medium w-full'
+                  onClick={handleProfilePicSubmit}
+                >
+                  Save Profile Picture
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

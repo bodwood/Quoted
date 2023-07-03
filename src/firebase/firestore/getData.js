@@ -70,7 +70,6 @@ export async function getAllQuoteInfo() {
       };
     });
     allQuotes = allQuotes.concat(userQuotesWithInfo);
-    console.log(allQuotes)
   });
 
   return allQuotes;
@@ -92,8 +91,6 @@ export async function getAllQuotesCurrentUser(uid) {
         quote: quote,
       });
     });
-
-    console.log(allQuotes);
     return allQuotes;
   }
 
