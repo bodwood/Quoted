@@ -2,8 +2,7 @@
 import QuoteCard from '@/components/QuoteCard';
 import { useAuthContext } from '@/context/AuthContext';
 import { getAllQuoteInfo } from '@/firebase/firestore/getData';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -32,7 +31,7 @@ const AllQuotes = () => {
       return updatedQuotes;
     });
   };
-  
+
   return (
     <div className='container mx-auto p-12'>
       <h1 className='text-4xl font-bold justify-center'>Feed</h1>
