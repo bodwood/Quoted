@@ -1,3 +1,4 @@
+'use client'
 import './globals.css';
 import { AuthContext } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
