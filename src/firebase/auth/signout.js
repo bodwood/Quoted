@@ -1,3 +1,4 @@
+'use client'
 import firebase_app from '../config';
 import { signOut, getAuth } from 'firebase/auth';
 

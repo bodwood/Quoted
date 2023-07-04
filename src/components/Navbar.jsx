@@ -1,8 +1,7 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import userSignOut from '@/firebase/auth/signout';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useAuthContext } from '@/context/AuthContext';
 
