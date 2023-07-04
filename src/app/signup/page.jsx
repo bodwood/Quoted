@@ -38,7 +38,7 @@ const SignUp = () => {
             <h1 className=''>Sign Up</h1> {/* heading classname */}
             <div className='flex justify-center'>
               <p className='text-muted'>Already have an account?</p>
-              <a href='/registration' className='ml-1 text-orange-500'>
+              <a href='/signin' className='ml-1 text-orange-500'>
                 Sign In
               </a>
             </div>

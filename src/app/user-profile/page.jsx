@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useAuthContext } from '@/context/AuthContext';
 import { updateDocument, getDocument } from '@/firebase/firestore/getData';
 import addData from '@/firebase/firestore/addData';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export default function UserProfile() {
   const [user, setUser] = useState({
@@ -15,9 +14,7 @@ export default function UserProfile() {
   const [image, setImage] = useState(null);
   const userId = useAuthContext().user.uid;
   const currentUser = useAuthContext().user;
-  const currentProfilePic = useAuthContext().user.profilePic;
   const profilePicInputRef = useRef();
-  const storage = getStorage(); // Get the storage instance
 
   useEffect(() => {
     const fetchUserData = async () => {

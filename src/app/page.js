@@ -1,15 +1,13 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaArrowRight, FaHelicopter, FaCommentDots } from 'react-icons/fa';
 import 'firebase/auth';
 import { useAuthContext } from '@/context/AuthContext';
 
-
 const LandingScreen = () => {
-  
-  const {user} = useAuthContext();
-  
+  const { user } = useAuthContext();
+
   return (
     <div className='max-w-7xl mx-auto'>
       {user ? (
@@ -21,11 +19,11 @@ const LandingScreen = () => {
                 <span className='absolute w-full h-3 bottom-1 left-0 bg-red-400 z-[-1]'></span>
               </span>
               <br />
-              <span className='text-red-400'>now let's post!</span>
+              <span className='text-red-400'>&rsquo;now let&apos;s post!&rsquo;</span>
             </h1>
             <p className='text-gray-500'>
               Check out all the quotes from your friends and family. Or post your own quote and let the world know what
-              you're thinking.
+              you are thinking.
             </p>
             <div className='space-x-4 sm:space-x-6 flex flex-col sm:flex-row'>
               <Link href='/add-quote' passHref>
@@ -61,8 +59,9 @@ const LandingScreen = () => {
                 <span className='absolute w-full h-3 bottom-1 left-0 bg-red-400 z-[-1]'></span>
               </span>
               <br />
-              <span className='text-red-400'>quotes from everywhere!</span>
+              <span className='text-red-400'>&rsquo;quotes from everywhere!&rsquo;</span>
             </h1>
+
             <p className='text-gray-500'>
               Upload your favorite quotes from your favorite movies, books, and more! Sign Up now to get started!
             </p>
@@ -101,6 +100,7 @@ const LandingScreen = () => {
         </div>
       )}
     </div>
-  );};
+  );
+};
 
 export default LandingScreen;

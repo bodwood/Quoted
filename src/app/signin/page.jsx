@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from 'react';
 import signIn from '@/firebase/auth/signin';
 import { useRouter } from 'next/navigation';
@@ -26,7 +26,7 @@ const LoginScreen = () => {
           <div className='space-y-2 md:space-y-3 text-center'>
             <h1 className=''>Sign In</h1> {/* heading classname */}
             <div className='flex justify-center'>
-              <p className='text-muted'>Don't have an account?</p>
+              <p className='text-muted'>Don&apos;t have an account?</p>
               <a href='/SignUpScreen' className='ml-1 text-orange-500'>
                 Sign Up
               </a>

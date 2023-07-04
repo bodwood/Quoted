@@ -9,9 +9,6 @@ import { useRouter } from 'next/navigation';
 export default function AddQuote() {
   const [quote, setQuote] = useState('');
   const userId = useAuthContext().user.uid;
-  const email = useAuthContext().user.email;
-  const quotes = useAuthContext().user.quotes;
-  const timestamp = useAuthContext().user.timestamp;
   const router = useRouter();
 
   const data = {
@@ -21,8 +18,8 @@ export default function AddQuote() {
   };
 
   // This function is called when the form is submitted and adds the quote to firestore.
-  const handleForm = async (e) => {
-    e.preventDefault();
+  const handleForm = async (event) => {
+    event.preventDefault();
 
     const userDocument = await getDocument('users', userId);
 
@@ -46,7 +43,7 @@ export default function AddQuote() {
     } else {
       console.log(userDocument.error);
     }
-    return router.push('/all-quotes')
+    return router.push('/all-quotes');
   };
 
   return (
@@ -67,7 +64,7 @@ export default function AddQuote() {
                   id='quote'
                   placeholder='Add quote here'
                   className='w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
-                  onChange={(e) => setQuote(e.target.value)}
+                  onChange={(event) => setQuote(event.target.value)}
                 />
               </div>
             </div>
