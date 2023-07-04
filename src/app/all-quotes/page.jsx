@@ -5,7 +5,7 @@ import { getAllQuoteInfo } from '@/firebase/firestore/getData';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const allQuotes = () => {
+const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
   const { user } = useAuthContext() || '';
 
@@ -55,4 +55,4 @@ const allQuotes = () => {
   );
 };
 
-export default allQuotes;
+export default AllQuotes;

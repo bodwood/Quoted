@@ -5,7 +5,7 @@ import { updateDocument, getDocument } from '@/firebase/firestore/getData';
 import addData from '@/firebase/firestore/addData';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-export default function Home() {
+export default function UserProfile() {
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',

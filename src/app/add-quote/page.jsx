@@ -6,7 +6,7 @@ import { getDocument } from '@/firebase/firestore/getData';
 import { useRouter } from 'next/navigation';
 
 // Adds quote data to firestore by using the addData function in src/firebase/firestore/addData.js
-export default function Home() {
+export default function AddQuote() {
   const [quote, setQuote] = useState('');
   const userId = useAuthContext().user.uid;
   const email = useAuthContext().user.email;
