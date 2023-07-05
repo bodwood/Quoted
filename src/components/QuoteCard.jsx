@@ -38,7 +38,6 @@ const handleForm = async (e) => {
       });
 
       if (result) {
-        console.log(result);
         setEditMode(false);
         setEditedQuote(editedQuote); // Update the local state with the edited quote
         updateQuote(quoteId, editedQuote);

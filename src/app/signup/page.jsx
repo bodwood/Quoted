@@ -4,29 +4,30 @@ import signUp from '@/firebase/auth/signup';
 import { useRouter } from 'next/navigation';
 import addData from '@/firebase/firestore/addData';
 
+
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('')
+  const [lastName, setLastName] = useState('');
   const router = useRouter();
 
   const data = {
     firstName: firstName,
     lastName: lastName,
     email: email,
-  }
+  };
 
   //Runs signUp function from firebase/auth/signup.js
   const handleForm = async (e) => {
     e.preventDefault();
     const { result, error } = await signUp(email, password);
-    const {result2, error2 } = await addData('users', result.user.uid, {data});
-    if (error || error2) {
-      return console.log(error);
+    if (result) {
+      const userId = result.user.uid;
+      const myBlob  = await fetch('/images/placeholder_pic.png').then((r) => r.blob());
+      const myFile = new File([myBlob], 'placeholder_pic.png', { type: 'image/png' });
+      await addData('users', userId, { data }, myFile);
     }
-
-    console.log(result);
     return router.push('/add-quote');
   };
 

@@ -15,7 +15,6 @@ const LoginScreen = () => {
     if (error) {
       return console.log(error);
     }
-    console.log(result);
     //takes user to the home page
     return router.push('/add-quote');
   };

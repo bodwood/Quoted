@@ -5,11 +5,12 @@ import { updateDocument } from '@/firebase/firestore/getData';
 import { getDocument } from '@/firebase/firestore/getData';
 import { useRouter } from 'next/navigation';
 
-// Adds quote data to firestore by using the addData function in src/firebase/firestore/addData.js
 export default function AddQuote() {
   const [quote, setQuote] = useState('');
   const userId = useAuthContext().user.uid;
   const router = useRouter();
+
+  console.log('userId', userId);
 
   const data = {
     quote: quote,
@@ -17,7 +18,6 @@ export default function AddQuote() {
     id: userId,
   };
 
-  // This function is called when the form is submitted and adds the quote to firestore.
   const handleForm = async (event) => {
     event.preventDefault();
 
@@ -27,23 +27,20 @@ export default function AddQuote() {
       const userData = userDocument.result.data();
       const existingQuotes = userData.quotes || [];
 
-      // Add the new quote to the existing quotes
       existingQuotes.push(data);
 
-      // Update the user document with the new quotes
       const { result, error } = await updateDocument('users', userId, {
         quotes: existingQuotes,
       });
 
-      if (result) {
-        console.log(result);
-      } else {
+      if (error) {
         console.log(error);
+      } else {
+        router.push('/all-quotes');
       }
     } else {
       console.log(userDocument.error);
     }
-    return router.push('/all-quotes');
   };
 
   return (
@@ -51,7 +48,7 @@ export default function AddQuote() {
       <div className='space-y-8'>
         <div className='space-y-6'>
           <div className='space-y-2 md:space-y-3 text-center text-3xl'>
-            <h1 className=''>Add Quote</h1> {/* heading classname */}
+            <h1 className=''>Add Quote</h1>
           </div>
         </div>
         <div className='py-0 md:py-8 px-4 md:px-10 bg-[boxBR] md:shadow-xl text-black'>
@@ -71,7 +68,6 @@ export default function AddQuote() {
             <div className='space-y-6'>
               <button
                 className='bg-orange-500 text-white px-6 py-3 rounded-md text-lg font-medium w-full'
-                // disabled={loading} loading needs to be created
                 type='submit'
               >
                 Submit Quote

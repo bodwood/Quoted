@@ -1,7 +1,10 @@
 import firebase_app from '../config';
 import { getFirestore, doc, getDoc, updateDoc, getDocs, collection, query, where, getUser } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from 'firebase/storage';
+
 
 const db = getFirestore(firebase_app);
+const storage = getStorage(firebase_app);
 
 // Gets a document from Firestore by using the getDoc function from firebase/firestore
 export async function getDocument(collection, id) {
@@ -96,7 +99,6 @@ export async function getAllQuotesCurrentUser(uid) {
 
   return [];
 }
-
 
 
 // Fetches the user data from Firestore based on the user's ID

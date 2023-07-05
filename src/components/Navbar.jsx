@@ -10,6 +10,7 @@ function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const {user} = useAuthContext();
+  console.log("navbar user: " + user)
 
   const handleSignOut = async () => {
     try {
@@ -144,7 +145,6 @@ function Navbar(props) {
               <li className='flex items-center'>
                 <Link
                   href='/add-quote'
-                  onClick={handleSignOut}
                   passHref
                   className={
                     (props.transparent

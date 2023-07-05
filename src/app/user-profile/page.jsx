@@ -5,16 +5,17 @@ import { updateDocument, getDocument } from '@/firebase/firestore/getData';
 import addData from '@/firebase/firestore/addData';
 
 export default function UserProfile() {
-  const [user, setUser] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    profilePic: '',
-  });
-  const [image, setImage] = useState(null);
-  const userId = useAuthContext().user.uid;
-  const currentUser = useAuthContext().user;
-  const profilePicInputRef = useRef();
+    const [image, setImage] = useState(null);
+    const userId = useAuthContext().user.uid;
+    const currentUser = useAuthContext().user;
+    const profilePicInputRef = useRef();
+
+ const [user, setUser] = useState({
+   firstName: '',
+   lastName: '',
+   email: '',
+   profilePic: '',
+ });
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,14 +23,12 @@ export default function UserProfile() {
         if (currentUser) {
           const userDocument = await getDocument('users', userId);
           const userData = userDocument.result.data();
-          console.log(userData)
           setUser({
             firstName: userData.firstName || '',
             lastName: userData.lastName || '',
             email: userData.email || '',
             profilePic: userData.profilePic || '',
           });
-          console.log(user)
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
